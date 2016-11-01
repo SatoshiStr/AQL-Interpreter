@@ -1,0 +1,26 @@
+aql_stmt -> create_stmt ; | output_stmt ;
+create_stmt -> create view ID as view_stmt
+view_stmt -> select_stmt | extract_stmt
+output_stmt -> output view ID alias
+alias -> as ID | None
+select_stmt -> select select_list from from_list
+select_list -> select_item select_list2
+select_list2 -> , select_item select_list2 | None
+select_item -> ID . ID alias
+from_list -> from_item from_list2
+from_list2 -> , from_item from_list2 | None
+from_item -> ID ID
+extract_stmt -> extract extract_spec from from_list
+extract_spec -> regex_spec | pattern_spec
+regex_spec -> regex REG on column name_spec
+column -> ID . ID
+name_spec -> as ID | return group_spec
+group_spec -> single_group group_spec2
+group_spec2 -> and single_group group_spec2 | None
+single_group -> group NUM as ID
+pattern_spec -> pattern pattern_expr name_spec
+pattern_expr -> pattern_pkg pattern_expr2
+pattern_expr2 -> pattern_pkg pattern_expr2 | None
+pattern_pkg -> atom { NUM , NUM } | atom | pattern_group
+atom -> < column > | < Token > | REG
+pattern_group -> ( pattern_expr )

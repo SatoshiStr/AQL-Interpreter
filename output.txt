@@ -1,0 +1,1581 @@
+Check(aql_stmt)  {
+        create_stmt Check(create_stmt)  {
+                create Check(create)  {
+                        MATCH terminal
+                }
+                view Check(view)  {
+                        MATCH terminal
+                }
+                ID Check(ID)  {
+                        MATCH terminal
+                }
+                as Check(as)  {
+                        MATCH terminal
+                }
+                view_stmt Check(view_stmt)  {
+                        select_stmt Check(select_stmt)  {
+                                select Check(select)  {
+                                        notMATCH terminal
+                                }
+                                notMATCH
+                        }
+                        extract_stmt Check(extract_stmt)  {
+                                extract Check(extract)  {
+                                        MATCH terminal
+                                }
+                                extract_spec Check(extract_spec)  {
+                                        regex_spec Check(regex_spec)  {
+                                                regex Check(regex)  {
+                                                        MATCH terminal
+                                                }
+                                                REG Check(REG)  {
+                                                        MATCH terminal
+                                                }
+                                                on Check(on)  {
+                                                        MATCH terminal
+                                                }
+                                                column Check(column)  {
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        . Check(.)  {
+                                                                MATCH terminal
+                                                        }
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        MATCH
+                                                }
+                                                name_spec Check(name_spec)  {
+                                                        as Check(as)  {
+                                                                MATCH terminal
+                                                        }
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        MATCH
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                from Check(from)  {
+                                        MATCH terminal
+                                }
+                                from_list Check(from_list)  {
+                                        from_item Check(from_item)  {
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                MATCH
+                                        }
+                                        from_list2 Check(from_list2)  {
+                                                , Check(,)  {
+                                                        notMATCH terminal
+                                                }
+                                                None Check(None)  {
+                                                        MATCH terminal
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                MATCH
+                        }
+                        MATCH
+                }
+                MATCH
+        }
+        ; Check(;)  {
+                MATCH terminal
+        }
+        MATCH
+}
+print_prodStk
+aql_stmt -> create_stmt ; 
+create_stmt -> create view ID as view_stmt 
+view_stmt -> extract_stmt 
+extract_stmt -> extract extract_spec from from_list 
+from_list -> from_item from_list2 
+from_list2 -> None 
+from_item -> ID ID 
+extract_spec -> regex_spec 
+regex_spec -> regex REG on column name_spec 
+name_spec -> as ID 
+column -> ID . ID 
+start parse
+0x23ed0c0 aql_stmt 2
+create_stmt
+parse node name1: create_stmt
+parse node name: view_stmt
+from alias Document D
+name attr: Document text
+result size 6  regex [A-Z][a-z]*
+record pair 0, 6
+End a record
+record pair 12, 18
+End a record
+record pair 20, 27
+End a record
+record pair 29, 39
+End a record
+record pair 45, 57
+End a record
+record pair 59, 67
+End a record
+end
+Cap:
++----------------------+
+| Cap                  |
++----------------------+
+| Carter(0, 6)         |
+| Plains(12, 18)       |
+| Georgia(20, 27)      |
+| Washington(29, 39)   |
+| Westmoreland(45, 57) |
+| Virginia(59, 67)     |
++----------------------+
+Check(aql_stmt)  {
+        create_stmt Check(create_stmt)  {
+                create Check(create)  {
+                        MATCH terminal
+                }
+                view Check(view)  {
+                        MATCH terminal
+                }
+                ID Check(ID)  {
+                        MATCH terminal
+                }
+                as Check(as)  {
+                        MATCH terminal
+                }
+                view_stmt Check(view_stmt)  {
+                        select_stmt Check(select_stmt)  {
+                                select Check(select)  {
+                                        notMATCH terminal
+                                }
+                                notMATCH
+                        }
+                        extract_stmt Check(extract_stmt)  {
+                                extract Check(extract)  {
+                                        MATCH terminal
+                                }
+                                extract_spec Check(extract_spec)  {
+                                        regex_spec Check(regex_spec)  {
+                                                regex Check(regex)  {
+                                                        MATCH terminal
+                                                }
+                                                REG Check(REG)  {
+                                                        MATCH terminal
+                                                }
+                                                on Check(on)  {
+                                                        MATCH terminal
+                                                }
+                                                column Check(column)  {
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        . Check(.)  {
+                                                                MATCH terminal
+                                                        }
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        MATCH
+                                                }
+                                                name_spec Check(name_spec)  {
+                                                        as Check(as)  {
+                                                                notMATCH terminal
+                                                        }
+                                                        return Check(return)  {
+                                                                MATCH terminal
+                                                        }
+                                                        group_spec Check(group_spec)  {
+                                                                single_group Check(single_group)  {
+                                                                        group Check(group)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        NUM Check(NUM)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        as Check(as)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        ID Check(ID)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                group_spec2 Check(group_spec2)  {
+                                                                        and Check(and)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        None Check(None)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                MATCH
+                                                        }
+                                                        MATCH
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                from Check(from)  {
+                                        MATCH terminal
+                                }
+                                from_list Check(from_list)  {
+                                        from_item Check(from_item)  {
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                MATCH
+                                        }
+                                        from_list2 Check(from_list2)  {
+                                                , Check(,)  {
+                                                        notMATCH terminal
+                                                }
+                                                None Check(None)  {
+                                                        MATCH terminal
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                MATCH
+                        }
+                        MATCH
+                }
+                MATCH
+        }
+        ; Check(;)  {
+                MATCH terminal
+        }
+        MATCH
+}
+print_prodStk
+aql_stmt -> create_stmt ; 
+create_stmt -> create view ID as view_stmt 
+view_stmt -> extract_stmt 
+extract_stmt -> extract extract_spec from from_list 
+from_list -> from_item from_list2 
+from_list2 -> None 
+from_item -> ID ID 
+extract_spec -> regex_spec 
+regex_spec -> regex REG on column name_spec 
+name_spec -> return group_spec 
+group_spec -> single_group group_spec2 
+group_spec2 -> None 
+single_group -> group NUM as ID 
+column -> ID . ID 
+start parse
+0x23ea770 aql_stmt 2
+create_stmt
+parse node name1: create_stmt
+parse node name: view_stmt
+from alias Document D
+name attr: Document text
+result size 3  regex Washington|Georgia|Virginia
+record pair 20, 27
+End a record
+record pair 29, 39
+End a record
+record pair 59, 67
+End a record
+end
+Stt:
++--------------------+
+| Stt                |
++--------------------+
+| Georgia(20, 27)    |
+| Washington(29, 39) |
+| Virginia(59, 67)   |
++--------------------+
+Check(aql_stmt)  {
+        create_stmt Check(create_stmt)  {
+                create Check(create)  {
+                        MATCH terminal
+                }
+                view Check(view)  {
+                        MATCH terminal
+                }
+                ID Check(ID)  {
+                        MATCH terminal
+                }
+                as Check(as)  {
+                        MATCH terminal
+                }
+                view_stmt Check(view_stmt)  {
+                        select_stmt Check(select_stmt)  {
+                                select Check(select)  {
+                                        notMATCH terminal
+                                }
+                                notMATCH
+                        }
+                        extract_stmt Check(extract_stmt)  {
+                                extract Check(extract)  {
+                                        MATCH terminal
+                                }
+                                extract_spec Check(extract_spec)  {
+                                        regex_spec Check(regex_spec)  {
+                                                regex Check(regex)  {
+                                                        notMATCH terminal
+                                                }
+                                                notMATCH
+                                        }
+                                        pattern_spec Check(pattern_spec)  {
+                                                pattern Check(pattern)  {
+                                                        MATCH terminal
+                                                }
+                                                pattern_expr Check(pattern_expr)  {
+                                                        pattern_pkg Check(pattern_pkg)  {
+                                                                atom Check(atom)  {
+                                                                        < Check(<)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        < Check(<)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        REG Check(REG)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        notMATCH
+                                                                }
+                                                                atom Check(atom)  {
+                                                                        < Check(<)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        < Check(<)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        REG Check(REG)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        notMATCH
+                                                                }
+                                                                pattern_group Check(pattern_group)  {
+                                                                        ( Check(()  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        pattern_expr Check(pattern_expr)  {
+                                                                                pattern_pkg Check(pattern_pkg)  {
+                                                                                        atom Check(atom)  {
+                                                                                                < Check(<)  {
+                                                                                                        MATCH terminal
+                                                                                                }
+                                                                                                column Check(column)  {
+                                                                                                        ID Check(ID)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        . Check(.)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        ID Check(ID)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        MATCH
+                                                                                                }
+                                                                                                > Check(>)  {
+                                                                                                        MATCH terminal
+                                                                                                }
+                                                                                                MATCH
+                                                                                        }
+                                                                                        { Check({)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        atom Check(atom)  {
+                                                                                                < Check(<)  {
+                                                                                                        MATCH terminal
+                                                                                                }
+                                                                                                column Check(column)  {
+                                                                                                        ID Check(ID)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        . Check(.)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        ID Check(ID)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        MATCH
+                                                                                                }
+                                                                                                > Check(>)  {
+                                                                                                        MATCH terminal
+                                                                                                }
+                                                                                                MATCH
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                pattern_expr2 Check(pattern_expr2)  {
+                                                                                        pattern_pkg Check(pattern_pkg)  {
+                                                                                                atom Check(atom)  {
+                                                                                                        < Check(<)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        < Check(<)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        REG Check(REG)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        notMATCH
+                                                                                                }
+                                                                                                atom Check(atom)  {
+                                                                                                        < Check(<)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        < Check(<)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        REG Check(REG)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        notMATCH
+                                                                                                }
+                                                                                                pattern_group Check(pattern_group)  {
+                                                                                                        ( Check(()  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        notMATCH
+                                                                                                }
+                                                                                                notMATCH
+                                                                                        }
+                                                                                        None Check(None)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        ) Check())  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                MATCH
+                                                        }
+                                                        pattern_expr2 Check(pattern_expr2)  {
+                                                                pattern_pkg Check(pattern_pkg)  {
+                                                                        atom Check(atom)  {
+                                                                                < Check(<)  {
+                                                                                        notMATCH terminal
+                                                                                }
+                                                                                < Check(<)  {
+                                                                                        notMATCH terminal
+                                                                                }
+                                                                                REG Check(REG)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        { Check({)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        atom Check(atom)  {
+                                                                                < Check(<)  {
+                                                                                        notMATCH terminal
+                                                                                }
+                                                                                < Check(<)  {
+                                                                                        notMATCH terminal
+                                                                                }
+                                                                                REG Check(REG)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                pattern_expr2 Check(pattern_expr2)  {
+                                                                        pattern_pkg Check(pattern_pkg)  {
+                                                                                atom Check(atom)  {
+                                                                                        < Check(<)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        < Check(<)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        REG Check(REG)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        notMATCH
+                                                                                }
+                                                                                atom Check(atom)  {
+                                                                                        < Check(<)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        < Check(<)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        REG Check(REG)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        notMATCH
+                                                                                }
+                                                                                pattern_group Check(pattern_group)  {
+                                                                                        ( Check(()  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        pattern_expr Check(pattern_expr)  {
+                                                                                                pattern_pkg Check(pattern_pkg)  {
+                                                                                                        atom Check(atom)  {
+                                                                                                                < Check(<)  {
+                                                                                                                        MATCH terminal
+                                                                                                                }
+                                                                                                                column Check(column)  {
+                                                                                                                        ID Check(ID)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        . Check(.)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        ID Check(ID)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        MATCH
+                                                                                                                }
+                                                                                                                > Check(>)  {
+                                                                                                                        MATCH terminal
+                                                                                                                }
+                                                                                                                MATCH
+                                                                                                        }
+                                                                                                        { Check({)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        atom Check(atom)  {
+                                                                                                                < Check(<)  {
+                                                                                                                        MATCH terminal
+                                                                                                                }
+                                                                                                                column Check(column)  {
+                                                                                                                        ID Check(ID)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        . Check(.)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        ID Check(ID)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        MATCH
+                                                                                                                }
+                                                                                                                > Check(>)  {
+                                                                                                                        MATCH terminal
+                                                                                                                }
+                                                                                                                MATCH
+                                                                                                        }
+                                                                                                        MATCH
+                                                                                                }
+                                                                                                pattern_expr2 Check(pattern_expr2)  {
+                                                                                                        pattern_pkg Check(pattern_pkg)  {
+                                                                                                                atom Check(atom)  {
+                                                                                                                        < Check(<)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        < Check(<)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        REG Check(REG)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        notMATCH
+                                                                                                                }
+                                                                                                                atom Check(atom)  {
+                                                                                                                        < Check(<)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        < Check(<)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        REG Check(REG)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        notMATCH
+                                                                                                                }
+                                                                                                                pattern_group Check(pattern_group)  {
+                                                                                                                        ( Check(()  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        notMATCH
+                                                                                                                }
+                                                                                                                notMATCH
+                                                                                                        }
+                                                                                                        None Check(None)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        MATCH
+                                                                                                }
+                                                                                                MATCH
+                                                                                        }
+                                                                                        ) Check())  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        pattern_expr2 Check(pattern_expr2)  {
+                                                                                pattern_pkg Check(pattern_pkg)  {
+                                                                                        atom Check(atom)  {
+                                                                                                < Check(<)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                < Check(<)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                REG Check(REG)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                notMATCH
+                                                                                        }
+                                                                                        atom Check(atom)  {
+                                                                                                < Check(<)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                < Check(<)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                REG Check(REG)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                notMATCH
+                                                                                        }
+                                                                                        pattern_group Check(pattern_group)  {
+                                                                                                ( Check(()  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                notMATCH
+                                                                                        }
+                                                                                        notMATCH
+                                                                                }
+                                                                                None Check(None)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                MATCH
+                                                        }
+                                                        MATCH
+                                                }
+                                                name_spec Check(name_spec)  {
+                                                        as Check(as)  {
+                                                                notMATCH terminal
+                                                        }
+                                                        return Check(return)  {
+                                                                MATCH terminal
+                                                        }
+                                                        group_spec Check(group_spec)  {
+                                                                single_group Check(single_group)  {
+                                                                        group Check(group)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        NUM Check(NUM)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        as Check(as)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        ID Check(ID)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                group_spec2 Check(group_spec2)  {
+                                                                        and Check(and)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        single_group Check(single_group)  {
+                                                                                group Check(group)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                NUM Check(NUM)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                as Check(as)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                ID Check(ID)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        group_spec2 Check(group_spec2)  {
+                                                                                and Check(and)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                single_group Check(single_group)  {
+                                                                                        group Check(group)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        NUM Check(NUM)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        as Check(as)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        ID Check(ID)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                group_spec2 Check(group_spec2)  {
+                                                                                        and Check(and)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        None Check(None)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                MATCH
+                                                        }
+                                                        MATCH
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                from Check(from)  {
+                                        MATCH terminal
+                                }
+                                from_list Check(from_list)  {
+                                        from_item Check(from_item)  {
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                MATCH
+                                        }
+                                        from_list2 Check(from_list2)  {
+                                                , Check(,)  {
+                                                        MATCH terminal
+                                                }
+                                                from_item Check(from_item)  {
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        MATCH
+                                                }
+                                                from_list2 Check(from_list2)  {
+                                                        , Check(,)  {
+                                                                notMATCH terminal
+                                                        }
+                                                        None Check(None)  {
+                                                                MATCH terminal
+                                                        }
+                                                        MATCH
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                MATCH
+                        }
+                        MATCH
+                }
+                MATCH
+        }
+        ; Check(;)  {
+                MATCH terminal
+        }
+        MATCH
+}
+print_prodStk
+aql_stmt -> create_stmt ; 
+create_stmt -> create view ID as view_stmt 
+view_stmt -> extract_stmt 
+extract_stmt -> extract extract_spec from from_list 
+from_list -> from_item from_list2 
+from_list2 -> , from_item from_list2 
+from_list2 -> None 
+from_item -> ID ID 
+from_item -> ID ID 
+extract_spec -> pattern_spec 
+pattern_spec -> pattern pattern_expr name_spec 
+name_spec -> return group_spec 
+group_spec -> single_group group_spec2 
+group_spec2 -> and single_group group_spec2 
+group_spec2 -> and single_group group_spec2 
+group_spec2 -> None 
+single_group -> group NUM as ID 
+single_group -> group NUM as ID 
+single_group -> group NUM as ID 
+pattern_expr -> pattern_pkg pattern_expr2 
+pattern_expr2 -> pattern_pkg pattern_expr2 
+pattern_expr2 -> pattern_pkg pattern_expr2 
+pattern_expr2 -> None 
+pattern_pkg -> pattern_group 
+pattern_group -> ( pattern_expr ) 
+pattern_expr -> pattern_pkg pattern_expr2 
+pattern_expr2 -> None 
+pattern_pkg -> atom 
+atom -> < column > 
+column -> ID . ID 
+pattern_pkg -> atom 
+atom -> REG 
+pattern_pkg -> pattern_group 
+pattern_group -> ( pattern_expr ) 
+pattern_expr -> pattern_pkg pattern_expr2 
+pattern_expr2 -> None 
+pattern_pkg -> atom 
+atom -> < column > 
+column -> ID . ID 
+start parse
+0x23ee6c0 aql_stmt 2
+create_stmt
+parse node name1: create_stmt
+parse node name: view_stmt
+from alias Cap C
+Field name : 1 : Cap
+Field name : 2 : Stt
+Loc:
++--------------------------------+----------------------+--------------------+
+| Loc                            | Cap                  | Stt                |
++--------------------------------+----------------------+--------------------+
+| Plains, Georgia(12, 27)        | Plains(12, 18)       | Georgia(20, 27)    |
+| Georgia, Washington(20, 39)    | Georgia(20, 27)      | Washington(29, 39) |
+| Westmoreland, Virginia(45, 67) | Westmoreland(45, 57) | Virginia(59, 67)   |
++--------------------------------+----------------------+--------------------+
+Check(aql_stmt)  {
+        create_stmt Check(create_stmt)  {
+                create Check(create)  {
+                        MATCH terminal
+                }
+                view Check(view)  {
+                        MATCH terminal
+                }
+                ID Check(ID)  {
+                        MATCH terminal
+                }
+                as Check(as)  {
+                        MATCH terminal
+                }
+                view_stmt Check(view_stmt)  {
+                        select_stmt Check(select_stmt)  {
+                                select Check(select)  {
+                                        notMATCH terminal
+                                }
+                                notMATCH
+                        }
+                        extract_stmt Check(extract_stmt)  {
+                                extract Check(extract)  {
+                                        MATCH terminal
+                                }
+                                extract_spec Check(extract_spec)  {
+                                        regex_spec Check(regex_spec)  {
+                                                regex Check(regex)  {
+                                                        MATCH terminal
+                                                }
+                                                REG Check(REG)  {
+                                                        MATCH terminal
+                                                }
+                                                on Check(on)  {
+                                                        MATCH terminal
+                                                }
+                                                column Check(column)  {
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        . Check(.)  {
+                                                                MATCH terminal
+                                                        }
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        MATCH
+                                                }
+                                                name_spec Check(name_spec)  {
+                                                        as Check(as)  {
+                                                                notMATCH terminal
+                                                        }
+                                                        return Check(return)  {
+                                                                MATCH terminal
+                                                        }
+                                                        group_spec Check(group_spec)  {
+                                                                single_group Check(single_group)  {
+                                                                        group Check(group)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        NUM Check(NUM)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        as Check(as)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        ID Check(ID)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                group_spec2 Check(group_spec2)  {
+                                                                        and Check(and)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        None Check(None)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                MATCH
+                                                        }
+                                                        MATCH
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                from Check(from)  {
+                                        MATCH terminal
+                                }
+                                from_list Check(from_list)  {
+                                        from_item Check(from_item)  {
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                MATCH
+                                        }
+                                        from_list2 Check(from_list2)  {
+                                                , Check(,)  {
+                                                        notMATCH terminal
+                                                }
+                                                None Check(None)  {
+                                                        MATCH terminal
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                MATCH
+                        }
+                        MATCH
+                }
+                MATCH
+        }
+        ; Check(;)  {
+                MATCH terminal
+        }
+        MATCH
+}
+print_prodStk
+aql_stmt -> create_stmt ; 
+create_stmt -> create view ID as view_stmt 
+view_stmt -> extract_stmt 
+extract_stmt -> extract extract_spec from from_list 
+from_list -> from_item from_list2 
+from_list2 -> None 
+from_item -> ID ID 
+extract_spec -> regex_spec 
+regex_spec -> regex REG on column name_spec 
+name_spec -> return group_spec 
+group_spec -> single_group group_spec2 
+group_spec2 -> None 
+single_group -> group NUM as ID 
+column -> ID . ID 
+start parse
+0x23eee50 aql_stmt 2
+create_stmt
+parse node name1: create_stmt
+parse node name: view_stmt
+from alias Document D
+name attr: Document text
+result size 6  regex [A-Z][a-z]*
+record pair 0, 6
+End a record
+record pair 12, 18
+End a record
+record pair 20, 27
+End a record
+record pair 29, 39
+End a record
+record pair 45, 57
+End a record
+record pair 59, 67
+End a record
+end
+Per:
++----------------------+
+| Per                  |
++----------------------+
+| Carter(0, 6)         |
+| Plains(12, 18)       |
+| Georgia(20, 27)      |
+| Washington(29, 39)   |
+| Westmoreland(45, 57) |
+| Virginia(59, 67)     |
++----------------------+
+Check(aql_stmt)  {
+        create_stmt Check(create_stmt)  {
+                create Check(create)  {
+                        MATCH terminal
+                }
+                view Check(view)  {
+                        MATCH terminal
+                }
+                ID Check(ID)  {
+                        MATCH terminal
+                }
+                as Check(as)  {
+                        MATCH terminal
+                }
+                view_stmt Check(view_stmt)  {
+                        select_stmt Check(select_stmt)  {
+                                select Check(select)  {
+                                        notMATCH terminal
+                                }
+                                notMATCH
+                        }
+                        extract_stmt Check(extract_stmt)  {
+                                extract Check(extract)  {
+                                        MATCH terminal
+                                }
+                                extract_spec Check(extract_spec)  {
+                                        regex_spec Check(regex_spec)  {
+                                                regex Check(regex)  {
+                                                        notMATCH terminal
+                                                }
+                                                notMATCH
+                                        }
+                                        pattern_spec Check(pattern_spec)  {
+                                                pattern Check(pattern)  {
+                                                        MATCH terminal
+                                                }
+                                                pattern_expr Check(pattern_expr)  {
+                                                        pattern_pkg Check(pattern_pkg)  {
+                                                                atom Check(atom)  {
+                                                                        < Check(<)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        < Check(<)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        REG Check(REG)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        notMATCH
+                                                                }
+                                                                atom Check(atom)  {
+                                                                        < Check(<)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        < Check(<)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        REG Check(REG)  {
+                                                                                notMATCH terminal
+                                                                        }
+                                                                        notMATCH
+                                                                }
+                                                                pattern_group Check(pattern_group)  {
+                                                                        ( Check(()  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        pattern_expr Check(pattern_expr)  {
+                                                                                pattern_pkg Check(pattern_pkg)  {
+                                                                                        atom Check(atom)  {
+                                                                                                < Check(<)  {
+                                                                                                        MATCH terminal
+                                                                                                }
+                                                                                                column Check(column)  {
+                                                                                                        ID Check(ID)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        . Check(.)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        ID Check(ID)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        MATCH
+                                                                                                }
+                                                                                                > Check(>)  {
+                                                                                                        MATCH terminal
+                                                                                                }
+                                                                                                MATCH
+                                                                                        }
+                                                                                        { Check({)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        atom Check(atom)  {
+                                                                                                < Check(<)  {
+                                                                                                        MATCH terminal
+                                                                                                }
+                                                                                                column Check(column)  {
+                                                                                                        ID Check(ID)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        . Check(.)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        ID Check(ID)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        MATCH
+                                                                                                }
+                                                                                                > Check(>)  {
+                                                                                                        MATCH terminal
+                                                                                                }
+                                                                                                MATCH
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                pattern_expr2 Check(pattern_expr2)  {
+                                                                                        pattern_pkg Check(pattern_pkg)  {
+                                                                                                atom Check(atom)  {
+                                                                                                        < Check(<)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        < Check(<)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        REG Check(REG)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        notMATCH
+                                                                                                }
+                                                                                                atom Check(atom)  {
+                                                                                                        < Check(<)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        < Check(<)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        REG Check(REG)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        notMATCH
+                                                                                                }
+                                                                                                pattern_group Check(pattern_group)  {
+                                                                                                        ( Check(()  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        notMATCH
+                                                                                                }
+                                                                                                notMATCH
+                                                                                        }
+                                                                                        None Check(None)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        ) Check())  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                MATCH
+                                                        }
+                                                        pattern_expr2 Check(pattern_expr2)  {
+                                                                pattern_pkg Check(pattern_pkg)  {
+                                                                        atom Check(atom)  {
+                                                                                < Check(<)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                column Check(column)  {
+                                                                                        ID Check(ID)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        notMATCH
+                                                                                }
+                                                                                < Check(<)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                Token Check(Token)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                > Check(>)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        { Check({)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        NUM Check(NUM)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        , Check(,)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        NUM Check(NUM)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        } Check(})  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                pattern_expr2 Check(pattern_expr2)  {
+                                                                        pattern_pkg Check(pattern_pkg)  {
+                                                                                atom Check(atom)  {
+                                                                                        < Check(<)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        < Check(<)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        REG Check(REG)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        notMATCH
+                                                                                }
+                                                                                atom Check(atom)  {
+                                                                                        < Check(<)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        < Check(<)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        REG Check(REG)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        notMATCH
+                                                                                }
+                                                                                pattern_group Check(pattern_group)  {
+                                                                                        ( Check(()  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        pattern_expr Check(pattern_expr)  {
+                                                                                                pattern_pkg Check(pattern_pkg)  {
+                                                                                                        atom Check(atom)  {
+                                                                                                                < Check(<)  {
+                                                                                                                        MATCH terminal
+                                                                                                                }
+                                                                                                                column Check(column)  {
+                                                                                                                        ID Check(ID)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        . Check(.)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        ID Check(ID)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        MATCH
+                                                                                                                }
+                                                                                                                > Check(>)  {
+                                                                                                                        MATCH terminal
+                                                                                                                }
+                                                                                                                MATCH
+                                                                                                        }
+                                                                                                        { Check({)  {
+                                                                                                                notMATCH terminal
+                                                                                                        }
+                                                                                                        atom Check(atom)  {
+                                                                                                                < Check(<)  {
+                                                                                                                        MATCH terminal
+                                                                                                                }
+                                                                                                                column Check(column)  {
+                                                                                                                        ID Check(ID)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        . Check(.)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        ID Check(ID)  {
+                                                                                                                                MATCH terminal
+                                                                                                                        }
+                                                                                                                        MATCH
+                                                                                                                }
+                                                                                                                > Check(>)  {
+                                                                                                                        MATCH terminal
+                                                                                                                }
+                                                                                                                MATCH
+                                                                                                        }
+                                                                                                        MATCH
+                                                                                                }
+                                                                                                pattern_expr2 Check(pattern_expr2)  {
+                                                                                                        pattern_pkg Check(pattern_pkg)  {
+                                                                                                                atom Check(atom)  {
+                                                                                                                        < Check(<)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        < Check(<)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        REG Check(REG)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        notMATCH
+                                                                                                                }
+                                                                                                                atom Check(atom)  {
+                                                                                                                        < Check(<)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        < Check(<)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        REG Check(REG)  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        notMATCH
+                                                                                                                }
+                                                                                                                pattern_group Check(pattern_group)  {
+                                                                                                                        ( Check(()  {
+                                                                                                                                notMATCH terminal
+                                                                                                                        }
+                                                                                                                        notMATCH
+                                                                                                                }
+                                                                                                                notMATCH
+                                                                                                        }
+                                                                                                        None Check(None)  {
+                                                                                                                MATCH terminal
+                                                                                                        }
+                                                                                                        MATCH
+                                                                                                }
+                                                                                                MATCH
+                                                                                        }
+                                                                                        ) Check())  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        pattern_expr2 Check(pattern_expr2)  {
+                                                                                pattern_pkg Check(pattern_pkg)  {
+                                                                                        atom Check(atom)  {
+                                                                                                < Check(<)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                < Check(<)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                REG Check(REG)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                notMATCH
+                                                                                        }
+                                                                                        atom Check(atom)  {
+                                                                                                < Check(<)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                < Check(<)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                REG Check(REG)  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                notMATCH
+                                                                                        }
+                                                                                        pattern_group Check(pattern_group)  {
+                                                                                                ( Check(()  {
+                                                                                                        notMATCH terminal
+                                                                                                }
+                                                                                                notMATCH
+                                                                                        }
+                                                                                        notMATCH
+                                                                                }
+                                                                                None Check(None)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                MATCH
+                                                        }
+                                                        MATCH
+                                                }
+                                                name_spec Check(name_spec)  {
+                                                        as Check(as)  {
+                                                                notMATCH terminal
+                                                        }
+                                                        return Check(return)  {
+                                                                MATCH terminal
+                                                        }
+                                                        group_spec Check(group_spec)  {
+                                                                single_group Check(single_group)  {
+                                                                        group Check(group)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        NUM Check(NUM)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        as Check(as)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        ID Check(ID)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                group_spec2 Check(group_spec2)  {
+                                                                        and Check(and)  {
+                                                                                MATCH terminal
+                                                                        }
+                                                                        single_group Check(single_group)  {
+                                                                                group Check(group)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                NUM Check(NUM)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                as Check(as)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                ID Check(ID)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        group_spec2 Check(group_spec2)  {
+                                                                                and Check(and)  {
+                                                                                        MATCH terminal
+                                                                                }
+                                                                                single_group Check(single_group)  {
+                                                                                        group Check(group)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        NUM Check(NUM)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        as Check(as)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        ID Check(ID)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                group_spec2 Check(group_spec2)  {
+                                                                                        and Check(and)  {
+                                                                                                notMATCH terminal
+                                                                                        }
+                                                                                        None Check(None)  {
+                                                                                                MATCH terminal
+                                                                                        }
+                                                                                        MATCH
+                                                                                }
+                                                                                MATCH
+                                                                        }
+                                                                        MATCH
+                                                                }
+                                                                MATCH
+                                                        }
+                                                        MATCH
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                from Check(from)  {
+                                        MATCH terminal
+                                }
+                                from_list Check(from_list)  {
+                                        from_item Check(from_item)  {
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                ID Check(ID)  {
+                                                        MATCH terminal
+                                                }
+                                                MATCH
+                                        }
+                                        from_list2 Check(from_list2)  {
+                                                , Check(,)  {
+                                                        MATCH terminal
+                                                }
+                                                from_item Check(from_item)  {
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        ID Check(ID)  {
+                                                                MATCH terminal
+                                                        }
+                                                        MATCH
+                                                }
+                                                from_list2 Check(from_list2)  {
+                                                        , Check(,)  {
+                                                                notMATCH terminal
+                                                        }
+                                                        None Check(None)  {
+                                                                MATCH terminal
+                                                        }
+                                                        MATCH
+                                                }
+                                                MATCH
+                                        }
+                                        MATCH
+                                }
+                                MATCH
+                        }
+                        MATCH
+                }
+                MATCH
+        }
+        ; Check(;)  {
+                MATCH terminal
+        }
+        MATCH
+}
+print_prodStk
+aql_stmt -> create_stmt ; 
+create_stmt -> create view ID as view_stmt 
+view_stmt -> extract_stmt 
+extract_stmt -> extract extract_spec from from_list 
+from_list -> from_item from_list2 
+from_list2 -> , from_item from_list2 
+from_list2 -> None 
+from_item -> ID ID 
+from_item -> ID ID 
+extract_spec -> pattern_spec 
+pattern_spec -> pattern pattern_expr name_spec 
+name_spec -> return group_spec 
+group_spec -> single_group group_spec2 
+group_spec2 -> and single_group group_spec2 
+group_spec2 -> and single_group group_spec2 
+group_spec2 -> None 
+single_group -> group NUM as ID 
+single_group -> group NUM as ID 
+single_group -> group NUM as ID 
+pattern_expr -> pattern_pkg pattern_expr2 
+pattern_expr2 -> pattern_pkg pattern_expr2 
+pattern_expr2 -> pattern_pkg pattern_expr2 
+pattern_expr2 -> None 
+pattern_pkg -> pattern_group 
+pattern_group -> ( pattern_expr ) 
+pattern_expr -> pattern_pkg pattern_expr2 
+pattern_expr2 -> None 
+pattern_pkg -> atom 
+atom -> < column > 
+column -> ID . ID 
+pattern_pkg -> atom { NUM , NUM } 
+atom -> < Token > 
+pattern_pkg -> pattern_group 
+pattern_group -> ( pattern_expr ) 
+pattern_expr -> pattern_pkg pattern_expr2 
+pattern_expr2 -> None 
+pattern_pkg -> atom 
+atom -> < column > 
+column -> ID . ID 
+start parse
+0x23f56b0 aql_stmt 2
+create_stmt
+parse node name1: create_stmt
+parse node name: view_stmt
+from alias Per P
+Field name : 1 : Per
+Field name : 2 : Loc
+name: atom
